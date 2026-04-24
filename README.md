@@ -12,6 +12,8 @@ La cúpula cumple la función de aislar al neonato del ambiente externo, protegi
 
 <img width="447" height="482" alt="image" src="https://github.com/user-attachments/assets/1ab027dc-e144-4d21-b377-f8fb1f76e45e" />
 
+<img width="1181" height="685" alt="image" src="https://github.com/user-attachments/assets/8a3e7243-2791-4474-8167-ab6a865f4149" />
+
 
 PARTE B
 

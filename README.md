@@ -57,6 +57,69 @@ Al ejecutar la simulación del circuito de medición de peso, se obtuvieron los 
 Al simular la aplicación de una carga progresiva sobre la celda de carga, equivalente al peso típico de un neonato, la pantalla OLED actualizó el valor mostrado de forma proporcional al peso aplicado, evidenciando la correcta linealidad del sistema de medición. La señal procesada por el HX711 se mantuvo estable y sin fluctuaciones significativas, gracias a la alta resolución de 24 bits del convertidor analógico-digital interno del módulo, lo que se tradujo en lecturas consistentes y confiables en la pantalla. La comunicación I²C entre el Arduino y la pantalla OLED funcionó correctamente a lo largo de toda la simulación, sin pérdida de datos ni interrupciones en la visualización, confirmando la estabilidad del protocolo de comunicación utilizado. En conjunto, los resultados obtenidos en la simulación demostraron que el circuito diseñado es capaz de medir y visualizar el peso del neonato de forma precisa, continua y no invasiva, cumpliendo con los requisitos establecidos para el sistema de monitoreo de la incubadora neonatal
   
 PARTE B
+# PARTE B – Construcción e implementación de la incubadora neonatal a escala
+
+## 1. Construcción del modelo de incubadora neonatal a escala
+
+### a. Cubierta, estructura y dimensiones
+
+Para la construcción del modelo físico de la incubadora neonatal se utilizó una estructura elaborada principalmente en madera, la cual permitió dar soporte a la base y al armazón del prototipo. La cubierta fue realizada con un material transparente tipo acetato o plástico flexible, con el propósito de garantizar la visibilidad hacia el interior de la incubadora durante las pruebas de funcionamiento.
+
+![Vista frontal de la estructura](imagenes/vista_frontal.jpg)
+
+El uso de este material transparente también contribuye a reducir parcialmente la pérdida de temperatura, ya que permite mantener el aire caliente dentro de la cabina. La estructura cuenta con una cubierta superior con apertura manual, lo que facilita el acceso al interior del sistema.
+
+![Vista lateral de la incubadora](imagenes/vista_lateral.jpg)
+
+---
+
+### b. Regulación de temperatura mediante convección
+
+La regulación de la temperatura interna se implementó mediante un sistema de convección forzada. Para ello, se utilizó un ventilador DC de 12V encargado de mover el aire dentro de la incubadora, junto con un elemento resistivo generador de calor, representado por un bombillo.
+
+![Montaje del ventilador y elemento calefactor](imagenes/ventilador_calefactor.jpg)
+
+El sistema de control fue desarrollado con base en el circuito diseñado previamente en la Parte A. Para la medición de temperatura se empleó un sensor DHT22 conectado a una ESP32, la cual procesa la información y controla la activación del calefactor mediante un relé de 5V de dos canales.
+
+![Montaje electrónico del sistema de control](imagenes/montaje_electronico.jpg)
+
+La lógica de funcionamiento se estableció para mantener la temperatura entre 36°C y 37.5°C. Cuando la temperatura medida es menor a 36°C, se activa el calefactor; cuando está dentro del rango, se enciende el LED verde; y cuando supera los 37.5°C, se desactiva el calefactor y se enciende el LED rojo correspondiente.
+
+---
+
+### c. Sistema de medición de peso
+
+Para estimar el peso del recién nacido se utilizó una galga de carga de 5 kg junto con el módulo HX711. La galga permite detectar la fuerza aplicada sobre la superficie de medición, mientras que el módulo HX711 amplifica y convierte la señal para que pueda ser interpretada por la ESP32.
+
+![Sistema de medición de peso](imagenes/galga_hx711.jpg)
+
+El valor de peso obtenido se muestra mediante una pantalla OLED, la cual permite visualizar la información de manera clara durante el funcionamiento del prototipo.
+
+---
+
+### d. Costo total del sistema desarrollado
+
+Para evaluar la viabilidad económica del prototipo, se realizó una estimación del costo de cada uno de los componentes utilizados.
+
+| Componente           | Cantidad | Precio unitario (COP) | Subtotal (COP) |
+|---------------------|----------|----------------------|----------------|
+| ESP32               | 1        | $35.000              | $35.000        |
+| Sensor DHT22        | 1        | $18.000              | $18.000        |
+| Ventilador DC 12V   | 1        | $15.000              | $15.000        |
+| Relé 5V 2 canales   | 1        | $10.000              | $10.000        |
+| Transformador 9V-9V | 1        | $20.000              | $20.000        |
+| Puente rectificador | 1        | $3.000               | $3.000         |
+| Condensador 2200µF  | 1        | $2.000               | $2.000         |
+| Pantalla OLED       | 1        | $20.000              | $20.000        |
+| LEDs                | 3        | $500                 | $1.500         |
+| Resistencias varias | 1 pack   | $2.000               | $2.000         |
+| Fusible             | 1        | $1.500               | $1.500         |
+| Jumpers             | 1 pack   | $5.000               | $5.000         |
+| Protoboards         | 1        | $10.000              | $10.000        |
+| Galga de carga 5 kg | 1        | $12.000              | $12.000        |
+| Módulo HX711        | 1        | $8.000               | $8.000         |
+
+**Costo total estimado: $162.000 COP**
 
 PREGUNTAS A DISCUSIÓN 
 

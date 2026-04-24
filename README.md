@@ -173,10 +173,13 @@ Ambos sistemas buscan mantener condiciones térmicas adecuadas para el neonato. 
 ---
 ## Conclusiones
 
-A partir del desarrollo de esta práctica se concluye que es posible implementar un sistema funcional que simule el comportamiento básico de una incubadora neonatal utilizando componentes electrónicos de bajo costo. El control de la temperatura mediante convección forzada resultó ser una estrategia efectiva para mantener condiciones térmicas relativamente estables dentro del sistema.
+El desarrollo de esta práctica permitió evidenciar que el control de variables físicas, particularmente la temperatura, es un factor crítico en el cuidado neonatal. Mantener la temperatura en un rango cercano a los 37°C no solo es una condición técnica del sistema, sino un requerimiento fisiológico esencial para garantizar la estabilidad metabólica y la supervivencia del neonato, especialmente en condiciones de prematuridad.
 
-Asimismo, la integración de sensores y actuadores permitió evidenciar la importancia del control de variables físicas en dispositivos biomédicos, especialmente cuando se trata de condiciones críticas como la supervivencia de un neonato. Se identificó que, aunque el sistema cumple con su propósito académico, es necesario implementar métodos de control más avanzados y sistemas de seguridad adicionales para acercarse a un entorno clínico real.
+A partir de los resultados obtenidos, se concluye que el uso de un sistema de convección forzada constituye una estrategia adecuada para la regulación térmica, ya que permite una distribución más homogénea del calor dentro de la incubadora. No obstante, el control implementado tipo ON/OFF, aunque funcional, presenta limitaciones en términos de precisión y estabilidad, evidenciando la necesidad de emplear técnicas de control más avanzadas para aplicaciones clínicas reales.
 
+Asimismo, se identificó que la medición de variables como el peso, aunque técnicamente viable mediante sensores como la galga extensiométrica, requiere procesos de calibración rigurosos para garantizar resultados confiables. Esto resalta la importancia de la precisión y la validación en sistemas biomédicos, donde pequeños errores pueden tener implicaciones significativas.
+
+Desde una perspectiva de ingeniería biomédica, el sistema desarrollado demuestra que es posible integrar múltiples subsistemas (medición, control y visualización) en un prototipo funcional de bajo costo. Sin embargo, al compararlo con incubadoras comerciales, se evidencia una brecha importante en aspectos como seguridad, redundancia, robustez y cumplimiento normativo, lo que limita su uso a entornos académicos o de prototipado.
 
 ---
 REFERENCIAS

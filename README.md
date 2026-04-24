@@ -1,6 +1,6 @@
-# Laboratorio-dise-o-incubadora-neonatal
+# LABORATORIO DISEÑO DE INCUBADORA NEONATAL
 
-PARTE A
+# PARTE A
 
 - PARTES QUE COMPONEN UNA INCUBADORA NEONATAL
 
@@ -49,15 +49,17 @@ Para este diseño nos basamos en el siguiente:
 
 El circuito simulado está compuesto por tres elementos principales: la celda de carga con su amplificador, el microcontrolador y la pantalla de visualización, los cuales trabajan en conjunto para garantizar una medición precisa y continua.
 El primer elemento es la celda de carga, visible en la parte inferior derecha del diagrama de simulación. Este transductor mecánico-eléctrico, basado en un puente Wheatstone interno, convierte la fuerza ejercida por el peso del neonato sobre el colchón de la incubadora en una señal eléctrica de muy baja amplitud, en el orden de los milivoltios. La celda de carga utilizada tiene una capacidad de medición adecuada para el rango de peso neonatal, que típicamente se encuentra entre 500 g y 5 kg. Sus cuatro cables de conexión, identificados por los colores rojo, negro, blanco y verde, corresponden respectivamente a la alimentación positiva (E+), alimentación negativa (E−), señal positiva (A+) y señal negativa (A−), los cuales se conectan directamente a las entradas del módulo amplificador.
+
 El segundo elemento es el módulo HX711 (Load Cell Amp), ubicado en la parte central inferior del circuito. Este módulo cumple una función esencial en el sistema, ya que la señal entregada por la celda de carga es demasiado débil para ser procesada directamente por el microcontrolador. El HX711 amplifica dicha señal con una ganancia interna de 128 veces mediante un amplificador de instrumentación, y la convierte en una señal digital de 24 bits a través de su convertidor analógico-digital interno. La comunicación entre el HX711 y el Arduino se realiza mediante dos líneas digitales: el pin DT (Data), conectado mediante el cable amarillo al pin digital del Arduino, y el pin SCK (Clock), conectado mediante el cable verde, los cuales conforman un protocolo de comunicación serial sincrónico. La alimentación del módulo se realiza a través de los pines VCC y GND, conectados a la salida de 5 V y tierra del Arduino respectivamente, identificados con los cables rojo y negro.
 El tercer elemento es el microcontrolador Arduino UNO, ubicado en la parte superior central del circuito. Este recibe los datos digitales provenientes del HX711, aplica el factor de calibración determinado experimentalmente durante la puesta en marcha del sistema, y calcula el valor de peso en gramos correspondiente a la lectura obtenida. Adicionalmente, el Arduino gestiona la comunicación con la pantalla de visualización mediante el protocolo I²C, utilizando los pines A4 (SDA) y A5 (SCL), identificados con los cables cian y verde respectivamente en el diagrama de simulación.
+
 El cuarto elemento es la pantalla OLED de 0,96 pulgadas con interfaz I²C, ubicada en la parte superior izquierda del circuito. Esta pantalla, conectada al Arduino mediante cuatro cables (GND, VCC, SCL y SDA), recibe los datos procesados por el microcontrolador y los muestra en tiempo real, desplegando el valor de peso del neonato en gramos o kilogramos con una resolución de aproximadamente 1 g. La pantalla OLED fue seleccionada para esta simulación por su bajo consumo energético, su alta legibilidad y su reducido tamaño, características ideales para un sistema embebido en una incubadora neonatal.
 
 Al ejecutar la simulación del circuito de medición de peso, se obtuvieron los siguientes resultados. En la pantalla OLED se observó la visualización en tiempo real del peso registrado por la celda de carga, mostrando el valor numérico actualizado de forma continua cada vez que se producía una variación en la fuerza aplicada sobre el sensor. Cuando no se aplicó ninguna carga sobre la celda, la pantalla mostró un valor de 0 g, confirmando que el proceso de tara fue ejecutado correctamente por el programa cargado en el Arduino al inicio de la simulación.
+
 Al simular la aplicación de una carga progresiva sobre la celda de carga, equivalente al peso típico de un neonato, la pantalla OLED actualizó el valor mostrado de forma proporcional al peso aplicado, evidenciando la correcta linealidad del sistema de medición. La señal procesada por el HX711 se mantuvo estable y sin fluctuaciones significativas, gracias a la alta resolución de 24 bits del convertidor analógico-digital interno del módulo, lo que se tradujo en lecturas consistentes y confiables en la pantalla. La comunicación I²C entre el Arduino y la pantalla OLED funcionó correctamente a lo largo de toda la simulación, sin pérdida de datos ni interrupciones en la visualización, confirmando la estabilidad del protocolo de comunicación utilizado. En conjunto, los resultados obtenidos en la simulación demostraron que el circuito diseñado es capaz de medir y visualizar el peso del neonato de forma precisa, continua y no invasiva, cumpliendo con los requisitos establecidos para el sistema de monitoreo de la incubadora neonatal
   
-PARTE B
-# PARTE B – Construcción e implementación de la incubadora neonatal a escala
+# PARTE B
 
 ## 1. Construcción del modelo de incubadora neonatal a escala
 
@@ -91,7 +93,7 @@ La lógica de funcionamiento se estableció para mantener la temperatura entre 3
 
 Para estimar el peso del recién nacido se utilizó una galga de carga de 5 kg junto con el módulo HX711. La galga permite detectar la fuerza aplicada sobre la superficie de medición, mientras que el módulo HX711 amplifica y convierte la señal para que pueda ser interpretada por la ESP32.
 
-![Sistema de medición de peso]("C:\Users\anaab\Downloads\IMAGEN 1.jpeg")
+![Sistema de medición de peso]()
 
 El valor de peso obtenido se muestra mediante una pantalla OLED, la cual permite visualizar la información de manera clara durante el funcionamiento del prototipo.
 
@@ -105,26 +107,79 @@ Para evaluar la viabilidad económica del prototipo, se realizó una estimación
 |---------------------|----------|----------------------|----------------|
 | ESP32               | 1        | $35.000              | $35.000        |
 | Sensor DHT22        | 1        | $18.000              | $18.000        |
-| Ventilador DC 12V   | 1        | $15.000              | $15.000        |
+| Ventilador DC 12V   | 1        | $7.500               | $7.500         |
 | Relé 5V 2 canales   | 1        | $10.000              | $10.000        |
-| Transformador 9V-9V | 1        | $20.000              | $20.000        |
+| Transformador 9V-9V | 1        | $17.000              | $17.000        |
 | Puente rectificador | 1        | $3.000               | $3.000         |
 | Condensador 2200µF  | 1        | $2.000               | $2.000         |
 | Pantalla OLED       | 1        | $20.000              | $20.000        |
-| LEDs                | 3        | $500                 | $1.500         |
+| LEDs                | 3        | $300                 | $900           |
 | Resistencias varias | 1 pack   | $2.000               | $2.000         |
 | Fusible             | 1        | $1.500               | $1.500         |
 | Jumpers             | 1 pack   | $5.000               | $5.000         |
-| Protoboards         | 1        | $10.000              | $10.000        |
-| Galga de carga 5 kg | 1        | $12.000              | $12.000        |
-| Módulo HX711        | 1        | $8.000               | $8.000         |
+| Protoboards         | 1        | $7.000               | $7.000         |
+| Galga de carga 5 kg | 1        | $23.000              | $23.000        |
+| Módulo HX711        | 1        | $7.500               | $7.500         |
 
-**Costo total estimado: $162.000 COP**
+**Costo total estimado: $159.400 COP**
 
-PREGUNTAS A DISCUSIÓN 
+---
 
-CONCLUSIONES 
+## 2. Comparación con soluciones comerciales
 
+El prototipo desarrollado presenta un costo considerablemente menor en comparación con incubadoras neonatales comerciales ofrecidas por proveedores como Dräger, Instrumentalia S.A.S. y LEEX Medical. Mientras que el sistema construido tiene un costo aproximado de $162.000 COP, las incubadoras comerciales pueden alcanzar valores de varios millones de pesos colombianos debido a su nivel de precisión, seguridad, certificación médica y sistemas avanzados de monitoreo.
+
+A diferencia del prototipo académico, los equipos comerciales integran controladores más precisos, alarmas clínicas, sensores redundantes, monitoreo de humedad, sistemas de seguridad eléctrica, regulación avanzada de temperatura y certificaciones para uso hospitalario. Sin embargo, el prototipo construido permite demostrar de manera funcional los principios básicos de una incubadora neonatal, especialmente el control térmico por convección, la medición de peso y la visualización de variables en tiempo real.
+
+Por lo tanto, aunque el sistema desarrollado no reemplaza una incubadora médica real, sí cumple con el objetivo académico de simular su funcionamiento básico mediante componentes electrónicos de bajo costo.
+
+# PARTE C
+
+## Procedimiento desarrollado
+
+El desarrollo de la práctica se llevó a cabo de manera progresiva, iniciando con la revisión teórica de los principios de funcionamiento de una incubadora neonatal, especialmente en lo relacionado con el control de temperatura y la medición de variables físicas relevantes como el peso.
+
+Posteriormente, se procedió al diseño y simulación del sistema de control de temperatura (Parte A), en el cual se estableció una lógica de control tipo ON/OFF capaz de mantener la temperatura en un rango de 36°C a 37.5°C. De manera paralela, se diseñó el sistema de medición de peso utilizando una galga extensiométrica y un módulo HX711 para el acondicionamiento de la señal.
+
+Una vez validados los diseños en simulación, se procedió a la construcción del prototipo físico (Parte B). En esta etapa se ensambló la estructura de la incubadora utilizando materiales como madera y cubierta transparente. Posteriormente, se integraron los componentes electrónicos, incluyendo el sensor de temperatura DHT22, el ventilador, el elemento calefactor, el relé de control, la pantalla OLED y el sistema de medición de peso.
+
+El sistema fue programado utilizando una ESP32, la cual permitió adquirir las señales de los sensores, procesarlas y ejecutar la lógica de control correspondiente. Finalmente, se realizaron pruebas experimentales para verificar el correcto funcionamiento del sistema, evaluando la estabilidad de la temperatura y la respuesta del sistema ante cambios en el entorno.
+
+---
+
+## Análisis de resultados
+
+En términos de control de temperatura, el sistema desarrollado logró mantener la variable dentro del rango establecido (36°C a 37.5°C) durante la mayor parte del tiempo de operación. Se observó que el control tipo ON/OFF genera pequeñas oscilaciones alrededor del valor deseado, lo cual es esperado debido a la naturaleza del controlador implementado.
+
+El uso del ventilador permitió mejorar la distribución del calor dentro de la incubadora, reduciendo la presencia de zonas con diferentes temperaturas. Sin embargo, se identificó que factores externos como la temperatura ambiente y la apertura de la cubierta afectan directamente el comportamiento del sistema, generando perturbaciones que deben ser compensadas por el controlador.
+
+En cuanto al sistema de medición de peso, se logró obtener una lectura funcional mediante la galga de carga y el módulo HX711. No obstante, se evidenció la necesidad de realizar una adecuada calibración para mejorar la precisión de las mediciones, ya que pequeñas variaciones en la señal pueden generar errores en la estimación del peso.
+
+De manera general, el prototipo cumplió con los objetivos planteados, permitiendo integrar múltiples variables físicas en un sistema funcional que simula el comportamiento básico de una incubadora neonatal.
+
+---
+
+## Preguntas para la discusión
+
+**¿Qué otras variables además de la temperatura y el peso son críticas en el monitoreo neonatal?**  
+Además de la temperatura y el peso, variables como la humedad, la frecuencia cardíaca, la saturación de oxígeno y la frecuencia respiratoria son fundamentales, ya que permiten evaluar el estado fisiológico del neonato de manera integral.
+
+**¿Qué haría falta para convertir el sistema desarrollado en una incubadora real?**  
+Sería necesario implementar controladores más precisos (como PID), sensores redundantes, sistemas de alarma, monitoreo de múltiples variables fisiológicas, aislamiento térmico adecuado, certificaciones médicas y cumplimiento de normativas de seguridad eléctrica y hospitalaria.
+
+**¿Qué semejanzas hay entre una incubadora neonatal y una servo-cuna?**  
+Ambos sistemas buscan mantener condiciones térmicas adecuadas para el neonato. Sin embargo, la incubadora proporciona un ambiente cerrado y controlado, mientras que la servo-cuna generalmente es un sistema abierto que regula la temperatura mediante radiación térmica.
+
+---
+## Conclusiones
+
+A partir del desarrollo de esta práctica se concluye que es posible implementar un sistema funcional que simule el comportamiento básico de una incubadora neonatal utilizando componentes electrónicos de bajo costo. El control de la temperatura mediante convección forzada resultó ser una estrategia efectiva para mantener condiciones térmicas relativamente estables dentro del sistema.
+
+Asimismo, la integración de sensores y actuadores permitió evidenciar la importancia del control de variables físicas en dispositivos biomédicos, especialmente cuando se trata de condiciones críticas como la supervivencia de un neonato. Se identificó que, aunque el sistema cumple con su propósito académico, es necesario implementar métodos de control más avanzados y sistemas de seguridad adicionales para acercarse a un entorno clínico real.
+
+Finalmente, la práctica permitió fortalecer habilidades en diseño electrónico, programación, integración de sistemas y análisis de resultados, así como comprender la relevancia de la ingeniería biomédica en el desarrollo de soluciones aplicadas al sector salud.
+
+---
 REFERENCIAS
 
 - EOS Meds. (s.f.). Incubadora neonatal. https://eosmeds.mx/incubadora-neonatal/

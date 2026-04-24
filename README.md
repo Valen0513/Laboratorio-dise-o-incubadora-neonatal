@@ -16,6 +16,23 @@ La cúpula cumple la función de aislar al neonato del ambiente externo, protegi
 
 <img width="775" height="803" alt="image" src="https://github.com/user-attachments/assets/21837032-50b4-4651-ad91-0f575f69da1e" />
 
+- DISEÑO Y SIMULACIÓN DEL CIRCUITO DE TEMPERATURA
+
+Para esto nos basamos del siguiente circuito:
+
+<img width="1017" height="403" alt="Captura de pantalla 2026-04-23 220213" src="https://github.com/user-attachments/assets/8461c4f7-493f-49b6-9a75-7c7b8f571818" />
+
+1. Etapa de entrada y transformación: El circuito parte de una fuente de CA de 120 V / 60 Hz, que alimenta un transformador 502 con salidas simétricas de +6 V y −6 V. El fusible protege el circuito ante sobrecargas.
+
+2. Puente rectificador: Las cuatro salidas del transformador ingresan a un puente rectificador de diodos, que convierte la señal alterna en corriente continua pulsante, generando dos ramas: una positiva y una negativa.
+
+3. Filtrado: Los capacitores C1 = 2200 µF y C3 = 2200 µF suavizan el voltaje rectificado, eliminando el rizado y entregando una señal de CC más estable a los reguladores.
+
+4. Regulador positivo LM317T: Regula el voltaje positivo de salida. El trimmer conectado a R1 = 220 Ω en el pin ADJ permite ajustar el voltaje de salida entre 1,25 V y ~6 V, que corresponde al rango de referencia para 36 °C. El diodo 1N4007 protege contra inversión de polaridad. El capacitor C2 = 0,1 µF filtra el ruido de alta frecuencia. La resistencia R2 = 470 Ω limita la corriente al LED verde, que indica que el voltaje positivo está activo.
+
+5. Regulador negativo LM337T: Opera de forma simétrica al LM317T pero en la rama negativa. El trimmer con R3 = 220 Ω ajusta el voltaje negativo de salida, correspondiente al límite de 37,5 °C. El diodo 1N4007 protege la salida. El capacitor C4 = 0,1 µF filtra ruido. La resistencia R4 = 470 Ω limita la corriente al LED amarillo, que indica actividad en la rama negativa.
+
+6. LEDs indicadores: El LED verde señala que el sistema está operando en el rango inferior (≈36 °C) y el LED amarillo indica operación en el rango superior (≈37,5 °C), dando retroalimentación visual al operador sobre el estado del control térmico.
 
 PARTE B
 

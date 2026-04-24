@@ -83,7 +83,7 @@ La regulación de la temperatura interna se implementó mediante un sistema de c
 
 El sistema de control fue desarrollado con base en el circuito diseñado previamente en la Parte A. Para la medición de temperatura se empleó un sensor DHT22 conectado a una ESP32, la cual procesa la información y controla la activación del calefactor mediante un relé de 5V de dos canales.
 
-![Montaje electrónico del sistema de control](imagenes/montaje_electronico.jpg)
+![Montaje electrónico del sistema de control](IMAGEN2.jpeg)
 
 La lógica de funcionamiento se estableció para mantener la temperatura entre 36°C y 37.5°C. Cuando la temperatura medida es menor a 36°C, se activa el calefactor; cuando está dentro del rango, se enciende el LED verde; y cuando supera los 37.5°C, se desactiva el calefactor y se enciende el LED rojo correspondiente.
 

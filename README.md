@@ -177,7 +177,6 @@ A partir del desarrollo de esta práctica se concluye que es posible implementar
 
 Asimismo, la integración de sensores y actuadores permitió evidenciar la importancia del control de variables físicas en dispositivos biomédicos, especialmente cuando se trata de condiciones críticas como la supervivencia de un neonato. Se identificó que, aunque el sistema cumple con su propósito académico, es necesario implementar métodos de control más avanzados y sistemas de seguridad adicionales para acercarse a un entorno clínico real.
 
-Finalmente, la práctica permitió fortalecer habilidades en diseño electrónico, programación, integración de sistemas y análisis de resultados, así como comprender la relevancia de la ingeniería biomédica en el desarrollo de soluciones aplicadas al sector salud.
 
 ---
 REFERENCIAS

@@ -91,7 +91,7 @@ La lógica de funcionamiento se estableció para mantener la temperatura entre 3
 
 Para estimar el peso del recién nacido se utilizó una galga de carga de 5 kg junto con el módulo HX711. La galga permite detectar la fuerza aplicada sobre la superficie de medición, mientras que el módulo HX711 amplifica y convierte la señal para que pueda ser interpretada por la ESP32.
 
-![Sistema de medición de peso](imagenes/galga_hx711.jpg)
+![Sistema de medición de peso]("C:\Users\anaab\Downloads\IMAGEN 1.jpeg")
 
 El valor de peso obtenido se muestra mediante una pantalla OLED, la cual permite visualizar la información de manera clara durante el funcionamiento del prototipo.
 

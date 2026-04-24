@@ -171,7 +171,6 @@ Sería necesario implementar controladores más precisos (como PID), sensores re
 Ambos sistemas buscan mantener condiciones térmicas adecuadas para el neonato. Sin embargo, la incubadora proporciona un ambiente cerrado y controlado, mientras que la servo-cuna generalmente es un sistema abierto que regula la temperatura mediante radiación térmica.
 
 ---
-## Conclusiones
 
 ## Conclusiones
 

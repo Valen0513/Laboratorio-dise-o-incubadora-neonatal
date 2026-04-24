@@ -173,13 +173,15 @@ Ambos sistemas buscan mantener condiciones térmicas adecuadas para el neonato. 
 ---
 ## Conclusiones
 
-El desarrollo de esta práctica permitió evidenciar que el control de variables físicas, particularmente la temperatura, es un factor crítico en el cuidado neonatal. Mantener la temperatura en un rango cercano a los 37°C no solo es una condición técnica del sistema, sino un requerimiento fisiológico esencial para garantizar la estabilidad metabólica y la supervivencia del neonato, especialmente en condiciones de prematuridad.
+## Conclusiones
 
-A partir de los resultados obtenidos, se concluye que el uso de un sistema de convección forzada constituye una estrategia adecuada para la regulación térmica, ya que permite una distribución más homogénea del calor dentro de la incubadora. No obstante, el control implementado tipo ON/OFF, aunque funcional, presenta limitaciones en términos de precisión y estabilidad, evidenciando la necesidad de emplear técnicas de control más avanzadas para aplicaciones clínicas reales.
+El desarrollo de la práctica permitió reconocer que el control de la temperatura es una variable crítica en el cuidado neonatal, ya que mantener un ambiente cercano a los 37°C contribuye a la estabilidad fisiológica del recién nacido, especialmente en condiciones de prematuridad.
 
-Asimismo, se identificó que la medición de variables como el peso, aunque técnicamente viable mediante sensores como la galga extensiométrica, requiere procesos de calibración rigurosos para garantizar resultados confiables. Esto resalta la importancia de la precisión y la validación en sistemas biomédicos, donde pequeños errores pueden tener implicaciones significativas.
+El sistema de convección forzada implementado permitió distribuir el calor dentro de la incubadora y mantener la temperatura dentro del rango propuesto. Sin embargo, el control ON/OFF presentó limitaciones de precisión, por lo que en una aplicación real sería necesario emplear estrategias de control más estables y seguras.
 
-Desde una perspectiva de ingeniería biomédica, el sistema desarrollado demuestra que es posible integrar múltiples subsistemas (medición, control y visualización) en un prototipo funcional de bajo costo. Sin embargo, al compararlo con incubadoras comerciales, se evidencia una brecha importante en aspectos como seguridad, redundancia, robustez y cumplimiento normativo, lo que limita su uso a entornos académicos o de prototipado.
+La medición de peso mediante galga extensiométrica y módulo HX711 demostró ser funcional, aunque requiere una calibración adecuada para obtener valores confiables. Esto evidencia la importancia de validar los sensores en sistemas biomédicos.
+
+Finalmente, el prototipo desarrollado permitió integrar medición, control y visualización en un sistema de bajo costo. No obstante, frente a incubadoras comerciales, aún presenta limitaciones en seguridad, precisión y normatividad, por lo que su aplicación se limita al ámbito académico.
 
 ---
 REFERENCIAS

@@ -67,19 +67,17 @@ Al simular la aplicación de una carga progresiva sobre la celda de carga, equiv
 
 Para la construcción del modelo físico de la incubadora neonatal se utilizó una estructura elaborada principalmente en madera, la cual permitió dar soporte a la base y al armazón del prototipo. La cubierta fue realizada con un material transparente tipo acetato o plástico flexible, con el propósito de garantizar la visibilidad hacia el interior de la incubadora durante las pruebas de funcionamiento.
 
-![Vista frontal de la estructura](imagenes/vista_frontal.jpg)
+![Vista frontal de la estructura](IMAGEN4.jpeg)
 
 El uso de este material transparente también contribuye a reducir parcialmente la pérdida de temperatura, ya que permite mantener el aire caliente dentro de la cabina. La estructura cuenta con una cubierta superior con apertura manual, lo que facilita el acceso al interior del sistema.
 
-![Vista lateral de la incubadora](imagenes/vista_lateral.jpg)
+![Vista lateral de la incubadora](IMAGEN3.jpeg)
 
 ---
 
 ### b. Regulación de temperatura mediante convección
 
 La regulación de la temperatura interna se implementó mediante un sistema de convección forzada. Para ello, se utilizó un ventilador DC de 12V encargado de mover el aire dentro de la incubadora, junto con un elemento resistivo generador de calor, representado por un bombillo.
-
-![Montaje del ventilador y elemento calefactor](imagenes/ventilador_calefactor.jpg)
 
 El sistema de control fue desarrollado con base en el circuito diseñado previamente en la Parte A. Para la medición de temperatura se empleó un sensor DHT22 conectado a una ESP32, la cual procesa la información y controla la activación del calefactor mediante un relé de 5V de dos canales.
 

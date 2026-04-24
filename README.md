@@ -63,7 +63,60 @@ Al simular la aplicación de una carga progresiva sobre la celda de carga, equiv
 
 ## 1. Construcción del modelo de incubadora neonatal a escala
 
-### a. Cubierta, estructura y dimensiones
+### a. Implementación del código de control
+
+Antes de realizar la construcción física del prototipo, se desarrolló el código de control en Arduino IDE. Este código permite integrar la medición de temperatura, la estimación del peso, el control del bombillo y ventilador, la señalización mediante LEDs y la visualización de datos en una pantalla OLED.
+
+El sistema utiliza una ESP32 como unidad principal de procesamiento. Esta recibe la información del sensor DHT22 para medir la temperatura interna de la incubadora y del módulo HX711 conectado a una galga de carga para estimar el peso. Con base en estos datos, se ejecuta una lógica de control tipo ON/OFF.
+
+```cpp
+float t = dht.readTemperature();
+
+if (t < 36.0) {
+  digitalWrite(LED_AZUL, HIGH);
+  digitalWrite(RELE_BOMBILLO, LOW);
+  digitalWrite(RELE_VENTILADOR, HIGH);
+  estado = "FRIO";
+}
+else if (t >= 36.0 && t <= 37.5) {
+  digitalWrite(LED_VERDE, HIGH);
+  digitalWrite(RELE_BOMBILLO, HIGH);
+  digitalWrite(RELE_VENTILADOR, HIGH);
+  estado = "NORMAL";
+}
+else {
+  digitalWrite(LED_ROJO, HIGH);
+  digitalWrite(RELE_BOMBILLO, HIGH);
+  digitalWrite(RELE_VENTILADOR, LOW);
+  estado = "CALIENTE";
+}
+```
+Este fragmento corresponde al control de temperatura. Cuando la temperatura es menor a 36°C, el sistema activa el bombillo para aumentar el calor interno. Cuando la temperatura se encuentra entre 36°C y 37.5°C, el sistema se mantiene estable y se enciende el LED verde. Si la temperatura supera los 37.5°C, el bombillo se apaga y se activa el ventilador para ayudar a disminuir la temperatura.
+```cpp
+float peso = 0.0;
+
+if (balanza.is_ready()) {
+  balanza.set_scale(factor_calibracion);
+  peso = balanza.get_units(10);
+  if (peso < 0) peso = 0;
+}
+```
+Este fragmento permite obtener el peso mediante la galga de carga y el módulo HX711. Se promedian 10 lecturas para mejorar la estabilidad de la medición y se corrigen valores negativos pequeños causados por ruido y un factor de calibración de -870.
+```cpp
+display.print("Temp:");
+display.print(t, 1);
+display.print(" C");
+
+display.print("Peso:");
+display.print(peso, 1);
+display.print(" g");
+
+display.print(estado);
+display.display();
+```
+Finalmente, la pantalla OLED muestra la temperatura, el peso estimado y el estado actual del sistema, permitiendo monitorear el funcionamiento del prototipo en tiempo real.
+
+### b. Cubierta, estructura y dimensiones
 
 Para la construcción del modelo físico de la incubadora neonatal se utilizó una estructura elaborada principalmente en madera, la cual permitió dar soporte a la base y al armazón del prototipo. La cubierta fue realizada con un material transparente tipo acetato o plástico flexible, con el propósito de garantizar la visibilidad hacia el interior de la incubadora durante las pruebas de funcionamiento.
 
